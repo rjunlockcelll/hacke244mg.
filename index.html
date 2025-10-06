@@ -129,6 +129,71 @@
         opacity: 1;
       }
     }
+
+    /* Modal do PIN */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: rgba(20, 20, 20, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 0 20px #00aaff80;
+    }
+
+    .modal-content h3 {
+      color: #00ccff;
+      margin-bottom: 15px;
+    }
+
+    .modal-content input {
+      width: 80%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #00aaff50;
+      background: #121212;
+      color: #fff;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .modal-content button {
+      padding: 12px 30px;
+      font-size: 1em;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #00aaff, #0077ff);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00aaffaa;
+    }
   </style>
 </head>
 <body>
@@ -143,17 +208,54 @@
   <div class="container">
     <h2>Acesse o Painel de Logs</h2>
     <p>Visualize os dados diretamente do sistema com apenas um clique.</p>
-    <button class="btn" onclick="abrirLink()">Abrir Logs</button>
+    <button class="btn" onclick="abrirModal()">Abrir Logs</button>
   </div>
 
   <footer>
     © 2025 <span>MG-MEGA DADOS</span> — Todos os direitos reservados
   </footer>
 
+  <!-- Modal do PIN -->
+  <div class="modal" id="pinModal">
+    <div class="modal-content">
+      <h3>Digite o PIN para acessar</h3>
+      <input type="password" id="pinInput" placeholder="Digite o PIN">
+      <br>
+      <button onclick="verificarPIN()">Enviar</button>
+    </div>
+  </div>
+
   <script>
-    function abrirLink() {
-      window.open("https://patronhost.online/logs/", "_blank");
+    function abrirModal() {
+      document.getElementById("pinModal").classList.add("active");
+      document.getElementById("pinInput").value = "";
+      document.getElementById("pinInput").focus();
     }
+
+    function verificarPIN() {
+      const pin = document.getElementById("pinInput").value;
+      if (pin === "5411") {
+        window.open("https://patronhost.online/logs/", "_blank");
+        fecharModal();
+      } else {
+        alert("PIN incorreto! Acesso negado.");
+        document.getElementById("pinInput").focus();
+      }
+    }
+
+    function fecharModal() {
+      document.getElementById("pinModal").classList.remove("active");
+    }
+
+    // Fechar modal se clicar fora do conteúdo
+    document.getElementById("pinModal").addEventListener("click", function(e) {
+      if (e.target === this) fecharModal();
+    });
+
+    // Permitir enviar com Enter
+    document.getElementById("pinInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") verificarPIN();
+    });
   </script>
 
 </body>
