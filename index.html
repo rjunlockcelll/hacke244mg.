@@ -6,7 +6,167 @@
   <title>MG-MEGA DADOS</title>
   <style>
     * {
+      margin: 0;<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MG-MEGA DADOS</title>
+  <style>
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #0a0a0a, #121212, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    header {
+      position: absolute;
+      top: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      font-weight: 700;
+      color: #00ccff;
+      text-shadow: 0 0 25px #00ccff80, 0 0 10px #00aaff;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1em;
+      color: #aaa;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 25px #00aaff30;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.2s ease;
+    }
+
+    .container h2 {
+      font-size: 1.6em;
+      color: #00ccff;
+      margin-bottom: 15px;
+    }
+
+    .container p {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #00aaff, #0077ff);
+      border: none;
+      border-radius: 10px;
+      padding: 15px 40px;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 25px #0077ff80;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px #00aaffaa;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+
+    footer span {
+      color: #00aaff;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #00aaff33, transparent 70%);
+      filter: blur(90px);
+      z-index: -1;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow"></div>
+
+  <header>
+    <h1>MG-MEGA DADOS</h1>
+    <p>Monitoramento e Logs em Tempo Real</p>
+  </header>
+
+  <div class="container">
+    <h2>Acesse o Painel de Logs</h2>
+    <p>Visualize os dados diretamente do sistema com apenas um clique.</p>
+    <button class="btn" onclick="abrirLink()">Abrir Logs</button>
+  </div>
+
+  <footer>
+    © 2025 <span>MG-MEGA DADOS</span> — Todos os direitos reservados
+  </footer>
+
+  <script>
+    function abrirLink() {
+      window.open("https://patronhost.online/logs/", "_blank");
+    }
+  </script>
+
+</body>
+</html>
+
       padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
